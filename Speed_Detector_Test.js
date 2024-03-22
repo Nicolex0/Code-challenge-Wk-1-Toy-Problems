@@ -14,7 +14,7 @@ function calculateDemeritPoints(speed) {
         return 0; // There are no demerit points if speed is within limit
     } else {
         const surplusSpeed = speed - speedLimit;
-        const demeritPoints = Math.floor(excessSpeed / 5); // Calculates demerit points
+        const demeritPoints = Math.floor(surplusSpeed / 5); // Calculates demerit points
         return demeritPoints;
     }
 }
