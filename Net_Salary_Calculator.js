@@ -14,8 +14,9 @@ function calculateTax(grossSalary) {
     } else {
         tax = 5775 + (grossSalary - 56733) * 0.3;
     }
+    return tax;
 }
-return tax;
+
 
 // Function to calculate NHIF deductions based on the provided rates
 function calculateNHIF(grossSalary) {
@@ -56,10 +57,28 @@ function calculateNHIF(grossSalary) {
         nhif = 1700;
     }
     return nhif;
+}
 
 // Function to calculate NSSF deductions based on provided rates
 function calculateNSSF(grossSalary) {
     const nssfRate = 0.06; // the NSSF rate is 6% of the gross salary
     return (grossSalary * nssfRate)
 }
-}
+
+// Function to calculate the net salary
+function calculateNetSalary(basicSalary, benefits) {
+    const grossSalary = basicSalary + benefits;
+    const tax = calculateTax(grossSalary);
+    const nhifDeductions = calculateNHIF(grossSalary);
+    const nssfDeductions = calculateNSSF(grossSalary);
+    const netSalary = grossSalary - tax - nhifDeductions - nssfDeductions;
+    
+    return {
+        grossSalary: grossSalary,
+        tax: tax,
+        nhifDeductions: nhifDeductions,
+        nssfDeductions: nssfDeductions,
+        netSalary: netSalary
+    };
+} 
+
