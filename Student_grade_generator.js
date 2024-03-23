@@ -12,6 +12,7 @@ const calculateGrade  = (marks) => {
         return 'E';
     }  
 }
+
 // Function to prompt the user for input
 function promptForMarks() {
     let marks = parseFloat(prompt('Student marks (between 0 and 100):'));
@@ -23,6 +24,7 @@ function promptForMarks() {
    
     return marks;
 }
+
 // main program
 const main = () => {
     // Prompt for student marks
