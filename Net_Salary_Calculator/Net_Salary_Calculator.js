@@ -16,8 +16,7 @@ function calculateTax(grossSalary) {
     }
     return tax;
 }
-
-
+999999999.
 // Function to calculate NHIF deductions based on the provided rates
 function calculateNHIF(grossSalary) {
     let nhif = 0;
