@@ -1,22 +1,38 @@
-// Function to calculate tax based on the KRA rates
+// Function to calculate tax (PAYE) based on provided rates
 function calculateTax(grossSalary) {
     let tax = 0;
     if (grossSalary <= 24000) {
-        tax = 0
-    } else if (grossSalary <= 32333){
-        tax = (grossSalary - 24000) * 0.1;
-    } else if (grossSalary <= 40467) {
-        tax = 832 + (grossSalary - 32333) * 0.15;
-    } else if (grossSalary <= 48600) {
-        tax = 2087 + (grossSalary - 40467) * 0.2;
-    } else if (grossSalary <= 56733) {
-        tax = 3720 + (grossSalary - 48600) * 0.25;
+        tax = grossSalary * 0.1;
+    } else if (grossSalary <= 32333) {
+        tax = (grossSalary - 24000) * 0.25 + 2400;
+    } else if (grossSalary <= 40667) {
+        tax = (grossSalary - 32333) * 0.3 + 5500;
+    } else if (grossSalary <= 49000) {
+        tax = (grossSalary - 40667) * 0.3 + 8467;
+    } else if (grossSalary <= 57333) {
+        tax = (grossSalary - 49000) * 0.3 + 13000;
+    } else if (grossSalary <= 65667) {
+        tax = (grossSalary - 57333) * 0.3 + 19100;
+    } else if (grossSalary <= 74000) {
+        tax = (grossSalary - 65667) * 0.3 + 25733;
+    } else if (grossSalary <= 82333) {
+        tax = (grossSalary - 74000) * 0.3 + 32933;
+    } else if (grossSalary <= 90667) {
+        tax = (grossSalary - 82333) * 0.3 + 40667;
+    } else if (grossSalary <= 99000) {
+        tax = (grossSalary - 90667) * 0.3 + 49000;
+    } else if (grossSalary <= 107333) {
+        tax = (grossSalary - 99000) * 0.3 + 57333;
+    } else if (grossSalary <= 115667) {
+        tax = (grossSalary - 107333) * 0.3 + 65667;
+    } else if (grossSalary <= 124000) {
+        tax = (grossSalary - 115667) * 0.3 + 74000;
     } else {
-        tax = 5775 + (grossSalary - 56733) * 0.3;
+        tax = (grossSalary - 124000) * 0.3 + 82333;
     }
     return tax;
 }
-999999999.
+
 // Function to calculate NHIF deductions based on the provided rates
 function calculateNHIF(grossSalary) {
     let nhif = 0;
@@ -61,7 +77,7 @@ function calculateNHIF(grossSalary) {
 // Function to calculate NSSF deductions based on provided rates
 function calculateNSSF(grossSalary) {
     const nssfRate = 0.06; // the NSSF rate is 6% of the gross salary
-    return (grossSalary * nssfRate)
+    return grossSalary * nssfRate;
 }
 
 // Function to calculate the net salary
@@ -79,5 +95,4 @@ function calculateNetSalary(basicSalary, benefits) {
         nssfDeductions: nssfDeductions,
         netSalary: netSalary
     };
-} 
-
+}
