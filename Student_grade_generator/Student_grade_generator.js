@@ -1,35 +1,24 @@
-// Function calculate the grade
-const calculateGrade  = (marks) => {
-    if (marks > 79) {
-        return 'A';
-    } else if (marks >= 60 && marks <= 79) {
-        return 'B';
-    } else if (marks >= 50 && marks <= 59) {
-        return 'C';
-    } else if (marks >= 40 && marks <= 49) {
-        return 'D';
-    } else {
-        return 'E';
-    }  
-}
+const readline = require("readline");
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
-// Function to prompt the user for input
-function promptForMarks() {
-    let marks = parseFloat(prompt('Student marks (between 0 and 100):'));
-
-    // Function to check if the input is valid
-    while (isNaN(marks) || marks < 0 || marks > 100) {
-        marks = parseFloat(prompt('Invalid input ! Enter student marks (between 0 and 100):'))
-    }
-   
-    return marks;
-}
-
-// main program
-const main = () => {
-    // Prompt for student marks
-    const marks = promptForMarks()
-    // Calculate and output grade
-    const grade = calculateGrade(marks);
-    console.log(`Student's grade is: ${grade}`);
-}
+// Function to prompt for imput and calculate grade
+rl.question("Enter mark: ", (mark) => {
+  mark = parseFloat(mark);
+  if (isNaN(mark) || mark < 0 || mark > 100) {
+    console.log("Invalid mark!");
+  } else if (mark > 79) {
+    console.log("Grade: A");
+  } else if (mark >= 60) {
+    console.log("Grade: B");
+  } else if (mark >= 50) {
+    console.log("Grade: C");
+  } else if (mark >= 40) {
+    console.log("Grade: D");
+  } else {
+    console.log("Grade: E");
+  }
+  rl.close();
+});
