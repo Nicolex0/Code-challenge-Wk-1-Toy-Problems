@@ -17,14 +17,16 @@ function netSalaryCalculator() {
     const netSalary = grossSalary - tax - nhifDeduction - nssfDeduction;
     
     // Display the results
-    alert("Gross salary: " + grossSalary);
-    alert("NHIF deduction: " + nhifDeduction);
-    alert("NSSF deduction: " + nssfDeduction);
-    alert("Tax: " + tax);
-    alert("Net salary: " + netSalary);
+    const outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = "Gross salary: " + grossSalary + "<br>" +
+                          "NHIF deduction: " + nhifDeduction + "<br>" +
+                          "NSSF deduction: " + nssfDeduction + "<br>" +
+                          "Tax: " + tax + "<br>" +
+                          "Net salary: " + netSalary;
   } else {
     // Display an error message if the inputs are invalid
-    alert("Invalid inputs! Please enter non-negative numbers.");
+    const outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = "Invalid inputs! Please enter non-negative numbers.";
   }
 }
 
