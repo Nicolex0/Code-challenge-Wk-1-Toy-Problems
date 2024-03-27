@@ -1,61 +1,39 @@
-const readlineSync = require("readline-sync");
-
-// Get the basic salary and benefits from user input
-const basicSalary = readlineSync.question("Enter the basic salary: ");
-const benefits = readlineSync.question("Enter the benefits: ");
-
-// Calculate the KRA tax rate
-let taxRate;
-if (parseFloat(basicSalary) <= 24000) {
-  taxRate = 0.1;
-} else if (parseFloat(basicSalary) <= 32333) {
-  taxRate = 0.25;
-} else {
-  taxRate = 0.3;
+function netSalaryCalculator() {
+  // Prompt the user to enter basic salary and benefits
+  const basicSalary = prompt("Please enter basic salary:");
+  const benefits = prompt("Please enter benefits:");
+  
+  // Validate the inputs
+  if (basicSalary >= 0 && benefits >= 0) {
+    // Calculate the payee (i.e. Tax)
+    const tax = calculateTax(basicSalary + benefits);
+    
+    // Calculate NHIF and NSSF deductions
+    const nhifDeduction = calculateNHIFDeduction(basicSalary);
+    const nssfDeduction = calculateNSSFDeduction(benefits);
+    
+    // Calculate gross salary and net salary
+    const grossSalary = basicSalary + benefits;
+    const netSalary = grossSalary - tax - nhifDeduction - nssfDeduction;
+    
+    // Display the results
+    alert("Gross salary: " + grossSalary);
+    alert("NHIF deduction: " + nhifDeduction);
+    alert("NSSF deduction: " + nssfDeduction);
+    alert("Tax: " + tax);
+    alert("Net salary: " + netSalary);
+  } else {
+    // Display an error message if the inputs are invalid
+    alert("Invalid inputs! Please enter non-negative numbers.");
+  }
 }
 
-// Calculate the KRA tax deduction
-const payee = parseFloat(basicSalary) * taxRate;
+// function to calculate tax based on KRA tax rates
+function calculateTax(salary) {}
 
-// Calculate the NHIF deduction
-let nhifRate;
-if (parseFloat(basicSalary) <= 5999) {
-  nhifRate = 150;
-} else if (parseFloat(basicSalary) <= 7999) {
-  nhifRate = 300;
-} else if (parseFloat(basicSalary) <= 11999) {
-  nhifRate = 400;
-} else if (parseFloat(basicSalary) <= 14999) {
-  nhifRate = 500;
-} else if (parseFloat(basicSalary) <= 19999) {
-  nhifRate = 600;
-} else if (parseFloat(basicSalary) <= 24999) {
-  nhifRate = 750;
-} else if (parseFloat(basicSalary) <= 29999) {
-  nhifRate = 900;
-} else if (parseFloat(basicSalary) <= 34999) {
-  nhifRate = 1050;
-} else if (parseFloat(basicSalary) <= 39999) {
-  nhifRate = 1200;
-} else {
-  nhifRate = 1500;
-}
-const nhifDeductions = nhifRate;
+// function to calculate NHIF deduction based on NHIF rates
+function calculateNHIFDeduction(salary) {}
 
-// Calculate the NSSF deduction
-let nssfRate;
-if (parseFloat(basicSalary) <= 6000) {
-  nssfRate = 0.06;
-} else {
-  nssfRate = 0.06 / 2;
-}
-const nssfDeductions = parseFloat(basicSalary) * nssfRate;
-
-// Calculate the gross salary and net salary
-const grossSalary =
-  parseFloat(basicSalary) + parseFloat(benefits);
-const netSalary = grossSalary - payee - nhifDeductions - nssfDeductions;
-
-// Print the gross salary and net salary
-console.log(`Gross salary: ${grossSalary}`);
-console.log(`Net salary: ${netSalary}`);
+// function to calculate NSSF deduction based on NSSF rates
+function calculateNSSFDeduction(salary) {}
+  
