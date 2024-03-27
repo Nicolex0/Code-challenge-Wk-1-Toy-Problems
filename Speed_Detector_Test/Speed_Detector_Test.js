@@ -1,26 +1,29 @@
 const speedLimit = 70;
 const demeritLimit = 12;
 
-// Import the `readline-sync` module
-const readlineSync = require("readline-sync");
-
-// Get the car's speed from user input
-const speed = readlineSync.question("Enter the car's speed (in km/s): ");
-
-// Check if the car is overspeeding
-if (speed <= speedLimit) {
-  // If the car is driving at or below the speed limit, print "Ok"
-  console.log("Ok");
-} else {
-    // If the car is driving faster than the speed limit, calculate the number of demerit points
-    const demeritPoints = Math.floor((speed - speedLimit) / 5);
+function speedDetector() {
+  // Prompt the user to enter the car speed
+  const carSpeed = prompt("Please enter the car speed (in km/s):");
   
-    // Print the number of demerit points
-    console.log(`Points: ${demeritPoints}`);
-  
-    // Check if the number of demerit points is greater than 12
-    if (demeritPoints > 12) {
-      // If the number of demerit points is greater than 12, print "License suspended"
-      console.log("License suspended");
+  // Validate the input
+  if (carSpeed >= 0) {
+    let demeritPoints = 0;
+    
+    // Calculate the number of demerit points
+    if (carSpeed > 70) {
+      demeritPoints = Math.floor((carSpeed - 70) / 5);
     }
+    
+    // Display the result
+    if (demeritPoints === 0) {
+      alert("Ok");
+    } else if (demeritPoints <= 12) {
+      alert("Points: " + demeritPoints);
+    } else {
+      alert("License suspended");
+    }
+  } else {
+    // Display an error message if the input is invalid
+    alert("Invalid input! Please enter a non-negative number.");
   }
+}
