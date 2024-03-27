@@ -15,15 +15,17 @@ function speedDetector() {
     }
     
     // Display the result
+    const outputDiv = document.getElementById("output");
     if (demeritPoints === 0) {
-      alert("Ok");
+      outputDiv.innerHTML = "Ok";
     } else if (demeritPoints <= 12) {
-      alert("Points: " + demeritPoints);
+      outputDiv.innerHTML = "Points: " + demeritPoints;
     } else {
-      alert("License suspended");
+      outputDiv.innerHTML = "License suspended";
     }
   } else {
     // Display an error message if the input is invalid
-    alert("Invalid input! Please enter a non-negative number.");
+    const outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = "Invalid input! Please enter a non-negative number.";
   }
 }
