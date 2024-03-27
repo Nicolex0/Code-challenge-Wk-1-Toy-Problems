@@ -1,24 +1,27 @@
-const readline = require("readline");
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-// Function to prompt for imput and calculate grade
-rl.question("Enter mark: ", (mark) => {
-  mark = parseFloat(mark);
-  if (isNaN(mark) || mark < 0 || mark > 100) {
-    console.log("Invalid mark!");
-  } else if (mark > 79) {
-    console.log("Grade: A");
-  } else if (mark >= 60) {
-    console.log("Grade: B");
-  } else if (mark >= 50) {
-    console.log("Grade: C");
-  } else if (mark >= 40) {
-    console.log("Grade: D");
+function studentGradeGenerator() {
+  // Prompt the user to enter student marks
+  const studentMarks = prompt("Please enter student marks (between 0 and 100):");
+  
+  // Validate the input
+  if (studentMarks >= 0 && studentMarks <= 100) {
+    // Determine the grade based on the marks
+    let grade;
+    if (studentMarks >= 80) {
+      grade = "A";
+    } else if (studentMarks >= 60) {
+      grade = "B";
+    } else if (studentMarks >= 50) {
+      grade = "C";
+    } else if (studentMarks >= 40) {
+      grade = "D";
+    } else {
+      grade = "E";
+    }
+    
+    // Display the grade
+    alert("The student's grade is: " + grade);
   } else {
-    console.log("Grade: E");
+    // Display an error message if the input is invalid
+    alert("Invalid input! Please enter a number between 0 and 100.");
   }
-  rl.close();
-});
+}
