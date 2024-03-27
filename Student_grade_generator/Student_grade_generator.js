@@ -19,9 +19,11 @@ function studentGradeGenerator() {
     }
     
     // Display the grade
-    alert("The student's grade is: " + grade);
+    const outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = "The student's grade is: " + grade;
   } else {
     // Display an error message if the input is invalid
-    alert("Invalid input! Please enter a number between 0 and 100.");
+    const outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = "Invalid input! Please enter a number between 0 and 100.";
   }
 }
